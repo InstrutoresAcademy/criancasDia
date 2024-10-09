@@ -1,0 +1,161 @@
+/* Remove margens e espaçamentos internos padrão de todos os elementos e define o box-sizing para incluir bordas e padding no tamanho total do elemento */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estiliza o corpo da página para centralizar o conteúdo tanto horizontal quanto verticalmente, define uma altura total da tela, e aplica um fundo com cor e imagem */
+body {
+    display: flex; /* Alinha o conteúdo em um layout flexível */
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+    align-items: center; /* Centraliza o conteúdo verticalmente */
+    height: 100vh; /* Altura total da tela */
+    background-color: #282c34; /* Cor de fundo escura */
+    background-image: url('background.jpeg'); /* Define uma imagem de fundo */
+    background-size: cover; /* A imagem cobre todo o fundo */
+    background-position: center; /* Centraliza a imagem no fundo */
+    background-repeat: no-repeat; /* Não repete a imagem de fundo */
+}
+
+/* Estiliza a tela de menu inicial para cobrir a tela inteira com fundo semitransparente e centralizar o conteúdo */
+#menu-screen {
+    display: flex;
+    flex-direction: column; /* Alinha os elementos dentro do container em coluna */
+    justify-content: center; /* Centraliza o conteúdo verticalmente */
+    align-items: center; /* Centraliza o conteúdo horizontalmente */
+    text-align: center; /* Centraliza o texto */
+    background-color: rgba(0, 0, 0, 0.8); /* Fundo preto com 80% de transparência */
+    color: white; /* Cor do texto branca */
+    width: 100vw; /* Largura total da viewport */
+    height: 100vh; /* Altura total da viewport */
+    position: fixed; /* Fixa a tela de menu na posição */
+    top: 0;
+    left: 0;
+}
+
+/* Estiliza o botão de "Iniciar" com tamanho, cores e comportamento de clique */
+#start-button {
+    padding: 10px 20px; /* Espaçamento interno no botão */
+    font-size: 18px; /* Tamanho da fonte */
+    background-color: #800180; /* Cor de fundo roxa */
+    color: white; /* Cor do texto branca */
+    border: none; /* Remove borda padrão */
+    cursor: pointer; /* Exibe cursor de "mão" ao passar o mouse */
+    margin-top: 20px; /* Espaçamento superior */
+}
+
+/* Estilo do botão de "Iniciar" quando o mouse passa sobre ele */
+#start-button:hover {
+    background-color: #800180; /* Mantém a cor roxa ao passar o mouse */
+}
+
+/* Estiliza o container do jogo para centralizar os elementos e esconder o overflow */
+.game-container {
+    display: flex; /* Layout flexível */
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+    align-items: center; /* Centraliza o conteúdo verticalmente */
+    flex-direction: column; /* Alinha os elementos em coluna */
+    overflow: hidden; /* Oculta o conteúdo que ultrapassar os limites */
+}
+
+/* Estiliza o tabuleiro do jogo, organizando as células em uma grade 3x5 */
+#game-board {
+    display: grid; /* Cria um layout de grade */
+    grid-template-columns: repeat(3, 1fr); /* Define 3 colunas de tamanho igual */
+    grid-template-rows: repeat(5, 50px); /* Define 5 linhas com altura de 50px cada */
+    gap: 0; /* Remove espaço entre as células */
+    position: relative; /* Define a posição relativa para os elementos filhos */
+    border: 2px solid #fff; /* Borda branca ao redor do tabuleiro */
+    background-color: #ffffff; /* Fundo branco do tabuleiro */
+    width: 150px; /* Largura total do tabuleiro */
+    height: 350px; /* Altura total do tabuleiro */
+    overflow: hidden; /* Oculta conteúdo que ultrapassar os limites do tabuleiro */
+}
+
+/* Estiliza o jogador no jogo, com tamanho fixo e cor */
+.player {
+    width: 50px; /* Largura do jogador */
+    height: 50px; /* Altura do jogador */
+    background-color: #800180; /* Cor de fundo roxa */
+    position: absolute; /* Posicionamento absoluto dentro do tabuleiro */
+    bottom: 0; /* Posicionado na parte inferior do tabuleiro */
+    left: 0; /* Posicionado à esquerda do tabuleiro */
+}
+
+/* Estiliza os obstáculos, que também têm tamanho fixo e cor */
+.obstacle {
+    width: 50px; /* Largura dos obstáculos */
+    height: 50px; /* Altura dos obstáculos */
+    background-color: #87CEEB; /* Cor azul claro */
+    position: absolute; /* Posicionamento absoluto dentro do tabuleiro */
+}
+
+/* Estiliza a exibição da pontuação, que é posicionada acima do tabuleiro */
+#score-display {
+    position: absolute; /* Posicionamento absoluto */
+    bottom: 50px; /* Distância do fundo da tela */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translateX(-50%); /* Ajusta o centro exato da pontuação */
+    background-color: rgba(0, 0, 0, 0.6); /* Fundo preto translúcido */
+    color: white; /* Texto branco */
+    font-size: 24px; /* Tamanho da fonte */
+    font-weight: bold; /* Fonte em negrito */
+    padding: 10px 20px; /* Espaçamento interno */
+    border-radius: 10px; /* Arredonda os cantos */
+    z-index: 1; /* Garante que fique acima dos outros elementos */
+}
+
+/* Estiliza a tela de Game Over, que é inicialmente invisível */
+#game-over-screen {
+    display: none; /* Oculta a tela inicialmente */
+    position: fixed; /* Fixa no centro da tela */
+    top: 50%; /* Centraliza verticalmente */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translate(-50%, -50%); /* Ajusta para o centro exato da tela */
+    background-color: rgba(0, 0, 0, 0.8); /* Fundo preto translúcido */
+    color: white; /* Texto branco */
+    text-align: center; /* Centraliza o texto */
+    padding: 20px; /* Espaçamento interno */
+    border-radius: 10px; /* Arredonda os cantos */
+}
+
+/* Estiliza o botão de reiniciar o jogo após Game Over */
+#restart-button {
+    padding: 10px 20px; /* Espaçamento interno */
+    font-size: 16px; /* Tamanho da fonte */
+    background-color: #800180; /* Cor de fundo roxa */
+    color: white; /* Texto branco */
+    border: none; /* Remove borda padrão */
+    cursor: pointer; /* Exibe cursor de "mão" ao passar o mouse */
+}
+
+/* Estilo do botão de reiniciar quando o mouse passa sobre ele */
+#restart-button:hover {
+    background-color: #800180; /* Mantém a cor roxa ao passar o mouse */
+}
+
+/* Estilizando os botões de controle para dispositivos móveis */
+#controls {
+    display: flex; /* Layout flexível */
+    justify-content: center; /* Centraliza os botões */
+    margin-top: 10px; /* Espaçamento superior */
+}
+
+#controls button {
+    background-color: #800180; /* Cor de fundo roxa */
+    color: white; /* Cor do texto branca */
+    border: none; /* Remove borda padrão */
+    padding: 15px; /* Espaçamento interno */
+    font-size: 20px; /* Tamanho da fonte */
+    margin: 0 10px; /* Espaçamento entre os botões */
+    cursor: pointer; /* Exibe cursor de "mão" ao passar o mouse */
+    border-radius: 10px; /* Arredonda os cantos dos botões */
+    width: 120px; /* Define a mesma largura para ambos os botões */
+    text-align: center; /* Centraliza o texto dentro do botão */
+}
+
+/* Estilo dos botões de controle quando o mouse passa sobre eles */
+#controls button:hover {
+    background-color: #690069; /* Cor mais escura ao passar o mouse */
+}

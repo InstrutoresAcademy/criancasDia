@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Declaração do tipo de documento como HTML5 -->
+    <meta charset="UTF-8"> <!-- Define a codificação de caracteres como UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Torna o layout responsivo para diferentes tamanhos de tela -->
+    <title>Jogo de Esquiva</title> <!-- Título da página que será exibido na aba do navegador -->
+    <link rel="stylesheet" href="style.css"> <!-- Link para o arquivo de estilo CSS externo -->
+</head>
+<body>
+    <!-- Tela do Menu Inicial -->
+    <div id="menu-screen"> <!-- Container para a tela do menu -->
+        <h1>Jogo de Esquiva</h1> <!-- Título principal do jogo na tela de menu -->
+        <button id="start-button">Iniciar</button> <!-- Botão para iniciar o jogo -->
+    </div>
+
+    <!-- Tela do Jogo -->
+    <div class="game-container" id="game-container" style="display: none;"> <!-- Container para o jogo, inicialmente oculto -->
+        <div id="game-board"> <!-- Tabuleiro do jogo onde os elementos serão renderizados -->
+            <div class="player" id="player"></div> <!-- Elemento que representa o jogador no jogo -->
+        </div>
+        <div id="score-display">Score: 0</div> <!-- Exibição da pontuação fora do tabuleiro -->
+
+        <!-- Adicionando controles de toque para dispositivos móveis -->
+        <div id="controls"> <!-- Container para os botões de controle do jogador -->
+            <button id="left-btn">Esquerda</button> <!-- Botão para mover o jogador para a esquerda -->
+            <button id="right-btn">Direita</button> <!-- Botão para mover o jogador para a direita -->
+        </div>
+    </div>
+
+    <!-- Tela de Game Over -->
+    <div id="game-over-screen"> <!-- Container para a tela de Game Over, inicialmente oculto -->
+        <h1>Game Over</h1> <!-- Texto que será exibido quando o jogo acabar -->
+        <button id="restart-button">Reiniciar</button> <!-- Botão para reiniciar o jogo após o Game Over -->
+    </div>
+    
+    <!-- Inclusão do arquivo JavaScript que controla a lógica do jogo -->
+    <script src="script.js"></script>
+</body>
+</html>
